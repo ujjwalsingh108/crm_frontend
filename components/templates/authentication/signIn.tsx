@@ -1,7 +1,7 @@
 import * as React from "react";
 import Stack from "@mui/material/Stack";
-import AuthStaticContent from "../molecules/authentication/authStaticContent";
-import SignInCard from "../organisms/signInCard";
+import AuthStaticContent from "../../molecules/authentication/authStaticContent";
+import SignInCard from "@/components/organisms/authentication/signInCard";
 
 export default function SignIn() {
   return (
