@@ -19,8 +19,8 @@ import {
 } from "@/common/icons/customIcons";
 
 // Custom Component
-import ForgotPassword from "../molecules/authentication/forgotPassword";
 import CustomCard from "@/components/atoms/authentication/customCard";
+import ForgotPassword from "@/components/molecules/authentication/forgotPassword";
 
 export default function SignInCard() {
   const [emailError, setEmailError] = React.useState(false);
