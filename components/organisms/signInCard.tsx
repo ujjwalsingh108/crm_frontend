@@ -37,16 +37,41 @@ export default function SignInCard() {
     setOpen(false);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (emailError || passwordError) {
-      event.preventDefault();
-      return;
-    }
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Prevent default form submission
+
+    if (!validateInputs()) return; // Validate inputs before making the request
+
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const email = data.get("email") as string;
+    const password = data.get("password") as string;
+
+    try {
+      const response = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Login failed");
+      }
+
+      // Save the access token in localStorage or sessionStorage
+      localStorage.setItem("access_token", result?.session?.access_token);
+
+      console.log("Login successful", result);
+      alert("Login successful!");
+
+      // Redirect or update state after login
+    } catch (error: any) {
+      console.error("Login error:", error.message);
+      alert(error.message);
+    }
   };
 
   const validateInputs = () => {
