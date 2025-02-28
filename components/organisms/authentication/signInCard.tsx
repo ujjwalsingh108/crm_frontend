@@ -10,6 +10,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import { useRouter } from "next/router";
 
 // Custom Icon
 import {
@@ -23,6 +24,8 @@ import CustomCard from "@/components/atoms/authentication/customCard";
 import ForgotPassword from "@/components/molecules/authentication/forgotPassword";
 
 export default function SignInCard() {
+  const router = useRouter();
+
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState("");
   const [passwordError, setPasswordError] = React.useState(false);
@@ -64,10 +67,8 @@ export default function SignInCard() {
       // Save the access token in localStorage or sessionStorage
       localStorage.setItem("access_token", result?.session?.access_token);
 
-      console.log("Login successful", result);
-      alert("Login successful!");
-
       // Redirect or update state after login
+      router.replace("/leads");
     } catch (error: any) {
       console.error("Login error:", error.message);
       alert(error.message);
@@ -180,11 +181,7 @@ export default function SignInCard() {
         <Typography sx={{ textAlign: "center" }}>
           Don&apos;t have an account?{" "}
           <span>
-            <Link
-              href="/material-ui/getting-started/templates/sign-in/"
-              variant="body2"
-              sx={{ alignSelf: "center" }}
-            >
+            <Link href="/" variant="body2" sx={{ alignSelf: "center" }}>
               Sign up
             </Link>
           </span>
