@@ -25,6 +25,9 @@ const eslintConfig = [
       "import/prefer-default-export": "off", // Disable warning about default exports
       "react/display-name": "off", // Suppress missing display name warnings
       "@typescript-eslint/ban-ts-comment": "off", // Ignore TypeScript comments restrictions
+      "eslint-comments/no-unlimited-disable": "off", // Disable warnings about unused ESLint disable directives
+      "eslint-comments/no-unused-disable": "off", // Disable warnings about unused ESLint disable directives
+      "@typescript-eslint/no-explicit-any": "warn", // Suppress 'Unexpected any' errors but keep them as warnings
     },
   },
 ];
