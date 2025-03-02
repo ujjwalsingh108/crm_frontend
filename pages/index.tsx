@@ -1,5 +1,5 @@
-import SignIn from "@/components/templates/authentication/signIn";
+import SignUp from "@/components/templates/authentication/signUp";
 
 export default function Home() {
-  return <SignIn />;
+  return <SignUp />;
 }

@@ -13,8 +13,21 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      "no-unused-vars": 2,
-      "no-console": 1,
+      "no-unused-vars": "off", // Disable unused variables warning
+      "@typescript-eslint/no-unused-vars": [
+        "warn", // Change from "error" to "warn"
+        {
+          vars: "all",
+          args: "none", // Ignore unused function arguments like `props`
+          ignoreRestSiblings: true, // Allow object rest/spread usage
+        },
+      ],
+      "import/prefer-default-export": "off", // Disable warning about default exports
+      "react/display-name": "off", // Suppress missing display name warnings
+      "@typescript-eslint/ban-ts-comment": "off", // Ignore TypeScript comments restrictions
+      "eslint-comments/no-unlimited-disable": "off", // Disable warnings about unused ESLint disable directives
+      "eslint-comments/no-unused-disable": "off", // Disable warnings about unused ESLint disable directives
+      "@typescript-eslint/no-explicit-any": "warn", // Suppress 'Unexpected any' errors but keep them as warnings
     },
   },
 ];
